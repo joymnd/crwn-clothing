@@ -1,24 +1,24 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import './App.css';
-import HomePage from './pages/homepage/hompage.component';
-import ShopPage from './pages/shop/shop.component';
-import Header from './components/header/header.component';
-import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import Home from './routes/home/hompage.component';
+import Shop from './routes/shop/shop.component';
+import Navigation from './routes/navigation/navigation.component';
+import Authentication from './routes/sign-in-and-sign-up/authentication.component';
 
 
-
-function App() {
-  return (
-    <div> 
-      <Header/>
-      <Switch>
-        <Route exact path='/' component={HomePage}/>
-        <Route path='/shop' component={ShopPage}/>
-        <Route path='/signin' component={SignInAndSignUp}/>
-      </Switch>
+const App = () => {
+   return (
+    <div>
+      <Routes>
+        <Route path='/' element={<Navigation/>}>
+          <Route index element={<Home/>}/>
+          <Route path='shop' element={<Shop/>}/>
+          <Route path='sign-in' element={<Authentication/>}/>
+        </Route>
+      </Routes> 
     </div>
-  );
+  )
 }
 
 export default App;
